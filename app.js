@@ -7,12 +7,11 @@ console.dir(morse);
 
 const ditOrDah = keyPress => {
     if(keyPress <= 150){
-        morse.innerText = 'dit.'
+        morse.innerText += 'dit. '
         dit.play();
-
     }
     if(keyPress > 150){
-        morse.innerText = 'dah.'
+        morse.innerText += 'dah. '
         dah.play();
     }
 }
