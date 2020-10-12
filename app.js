@@ -1,19 +1,39 @@
 const morse = document.getElementById('morse');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
-let pressedAt = '';
+let pressedAt;
 let keyPressed = false;
-console.dir(morse);
+let keyUpTime;
+let sameCharacter = true;
+let character ='';
 
 const ditOrDah = keyPress => {
     if(keyPress <= 150){
         morse.innerText += 'dit. '
         dit.play();
     }
-    if(keyPress > 150){
+    else if(keyPress > 150){
         morse.innerText += 'dah. '
         dah.play();
     }
+}
+
+const playSound = (keyPress) => {
+    morse.innerText += ditOrDah(keyPress)
+}
+
+const countSpace = () => {
+    if(keyUpTime){
+        if(pressedAt - keyUpTime < 400){
+            character += 'part of a letter!'
+        }
+        else{
+            character = '';
+        }
+        console.log(pressedAt - keyUpTime)
+        console.log(character)
+    }
+
 }
 
 const handleKeyDown = (e) => {
@@ -21,16 +41,16 @@ const handleKeyDown = (e) => {
         keyPressed = true;
         pressedAt = Date.now();
     }
+    countSpace();
 }
 
 const handleKeyUp = (e) => {
     keyPressed = false;
-    const currentTime = Date.now();
-    const keyPress = currentTime - pressedAt;
+    keyUpTime = Date.now();
+    const keyPress = keyUpTime - pressedAt;
     console.log(keyPress);
     ditOrDah(keyPress);
 }
-
 
 window.addEventListener('keydown', handleKeyDown);
 window.addEventListener('keyup', handleKeyUp);
