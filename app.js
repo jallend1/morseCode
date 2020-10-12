@@ -24,14 +24,14 @@ const playSound = (keyPress) => {
 
 const countSpace = () => {
     if(keyUpTime){
+        console.log(pressedAt - keyUpTime)
         if(pressedAt - keyUpTime < 400){
-            character += 'part of a letter!'
+            return true;
         }
         else{
-            character = '';
+            return false;
         }
-        console.log(pressedAt - keyUpTime)
-        console.log(character)
+        
     }
 
 }
