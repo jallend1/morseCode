@@ -2,54 +2,67 @@ const morse = document.getElementById('morse');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
 let pressedAt;
-let keyPressed = false;
+let prevPressedAt;
 let keyUpTime;
 let sameCharacter = true;
-let character ='';
+let character = [];
+let keysEntered = [];
 
-const ditOrDah = keyPress => {
+const ditOrDah = keyPress => {                      // Calculates if length of keypress creates a dit or a dah
     if(keyPress <= 150){
-        morse.innerText += 'dit. '
-        dit.play();
+        return 'dit'
     }
-    else if(keyPress > 150){
-        morse.innerText += 'dah. '
-        dah.play();
+    else{
+        return 'dah'
     }
+    // Why doesn't this work?!
+    keyPress <= 150 ? 'dit' : 'dah';                
 }
 
-const playSound = (keyPress) => {
-    morse.innerText += ditOrDah(keyPress)
-}
-
-const countSpace = () => {
-    if(keyUpTime){
-        console.log(pressedAt - keyUpTime)
-        if(pressedAt - keyUpTime < 400){
-            return true;
-        }
-        else{
-            return false;
-        }
-        
+const extractLetters = () => {
+    const prevWord = [];
+    for(let i = 0; i < character.length; i++){
+        prevWord.unshift(character.shift())
     }
-
+    keysEntered.push(prevWord);
+    console.log(`Charcter: ${character}`);
+    console.log(`previousWord: ${prevWord}`);
+    console.log(`keysEntered: ${keysEntered}`);
 }
 
 const handleKeyDown = (e) => {
-    if(keyPressed === false){
-        keyPressed = true;
-        pressedAt = Date.now();
-    }
-    countSpace();
+    pressedAt ? prevPressedAt = pressedAt : null;
+    pressedAt = Date.now();
 }
 
-const handleKeyUp = (e) => {
-    keyPressed = false;
+const isNewWord = () => {
+    if(prevPressedAt){                                      // Only runs if there is a previous character that established a comparison time
+        if(keyUpTime - prevPressedAt < 1000){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+}
+
+const processLetter = (letter) => {
+    if(isNewWord()){
+        extractLetters();
+    }
+    console.log(character);
+    character.push(letter);
+    morse.textContent += `${letter}. `
+    letter === 'dit' ? dit.play() : dah.play();
+    console.log(character);
+    
+}
+
+const handleKeyUp = () => {
     keyUpTime = Date.now();
-    const keyPress = keyUpTime - pressedAt;
-    console.log(keyPress);
-    ditOrDah(keyPress);
+    const keyPressLength = keyUpTime - pressedAt;                      // Subtracts the current time from the time when the key was initially pressed
+    const letter = ditOrDah(keyPressLength);                            // Determines if dit or dah
+    processLetter(letter);
 }
 
 window.addEventListener('keydown', handleKeyDown);
