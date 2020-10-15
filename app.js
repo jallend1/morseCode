@@ -1,3 +1,33 @@
+//TODO: Create mechanism for final character to be translated -- setTimeout to clear out character variable?
+const codex = {
+    a: ['dit', 'dah'],
+    b: ['dah', 'dit', 'dit', 'dit'],
+    c: ['dah', 'dit','dah', 'dit'],
+    d: ['dah', 'dit', 'dit'],
+    e: ['dit'],
+    f: ['dit', 'dit', 'dah', 'dit'],
+    g: ['dah', 'dah', 'dit'],
+    h: ['dit', 'dit', 'dit', 'dit'],
+    i: ['dit', 'dit'],
+    j: ['dit', 'dah', 'dah', 'dah'],
+    k: ['dah', 'dit', 'dah'],
+    l: ['dit', 'dah', 'dit', 'dit'],
+    m: ['dah', 'dah'],
+    n: ['dah', 'dit'],
+    o: ['dah','dah','dah'],
+    p: ['dit', 'dah','dah', 'dit'],
+    q: ['dah','dah','dit','dah'],
+    r: ['dit','dah', 'dit'],
+    s: ['dit', 'dit', 'dit'],
+    t: ['dah'],
+    u: ['dit', 'dit', 'dah'],
+    v: ['dit', 'dit', 'dit','dah'],
+    w: ['dit', 'dah','dah'],
+    x: ['dah', 'dit', 'dit','dah'],
+    y: ['dah', 'dit', 'dah','dah'],
+    z: ['dah', 'dah', 'dit', 'dit']
+}
+
 const morse = document.getElementById('morse');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
@@ -25,9 +55,6 @@ const extractLetters = () => {
         prevWord.unshift(character.shift())
     }
     keysEntered.push(prevWord);
-    console.log(`Charcter: ${character}`);
-    console.log(`previousWord: ${prevWord}`);
-    console.log(`keysEntered: ${keysEntered}`);
 }
 
 const handleKeyDown = (e) => {
@@ -50,12 +77,9 @@ const processLetter = (letter) => {
     if(isNewWord()){
         extractLetters();
     }
-    console.log(character);
     character.push(letter);
     morse.textContent += `${letter}. `
     letter === 'dit' ? dit.play() : dah.play();
-    console.log(character);
-    
 }
 
 const handleKeyUp = () => {
