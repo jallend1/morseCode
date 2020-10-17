@@ -50,16 +50,21 @@ const ditOrDah = keyPress => {                      // Calculates if length of k
 }
 
 const extractLetters = () => {
-    const prevWord = [];
-    for(let i = 0; i < character.length; i++){
-        prevWord.unshift(character.shift())
-    }
+    const prevWord = character.map(x => x);
+    character.length = 0;
     keysEntered.push(prevWord);
 }
 
 const handleKeyDown = (e) => {
     pressedAt ? prevPressedAt = pressedAt : null;
     pressedAt = Date.now();
+}
+
+const handleKeyUp = () => {
+    keyUpTime = Date.now();
+    const keyPressLength = keyUpTime - pressedAt;                      // Subtracts the current time from the time when the key was initially pressed
+    const key = ditOrDah(keyPressLength);                            // Determines if dit or dah
+    processLetter(key);
 }
 
 const isNewWord = () => {
@@ -71,23 +76,23 @@ const isNewWord = () => {
             return true;
         }
     }
+    else{
+        return false;
+    }
 }
 
-const processLetter = (letter) => {
+const processLetter = (key) => {
+    console.log(isNewWord())
     if(isNewWord()){
         extractLetters();
     }
-    character.push(letter);
-    morse.textContent += `${letter}. `
-    letter === 'dit' ? dit.play() : dah.play();
+    character.push(key);
+    morse.textContent += `${key}. `
+    key === 'dit' ? dit.play() : dah.play();
+    console.log(character);
 }
 
-const handleKeyUp = () => {
-    keyUpTime = Date.now();
-    const keyPressLength = keyUpTime - pressedAt;                      // Subtracts the current time from the time when the key was initially pressed
-    const letter = ditOrDah(keyPressLength);                            // Determines if dit or dah
-    processLetter(letter);
-}
+
 
 window.addEventListener('keydown', handleKeyDown);
 window.addEventListener('keyup', handleKeyUp);
