@@ -24,7 +24,17 @@ const codex = {
     w: ['dit', 'dah','dah'],
     x: ['dah', 'dit', 'dit','dah'],
     y: ['dah', 'dit', 'dah','dah'],
-    z: ['dah', 'dah', 'dit', 'dit']
+    z: ['dah', 'dah', 'dit', 'dit'],
+    1: ['dit', 'dah', 'dah', 'dah', 'dah'],
+    2: ['dit', 'dit', 'dah', 'dah', 'dah'],
+    3: ['dit', 'dit', 'dit', 'dah', 'dah'],
+    4: ['dit', 'dit', 'dit', 'dit', 'dah'],
+    5: ['dit', 'dit', 'dit', 'dit', 'dit'],
+    6: ['dah', 'dit', 'dit', 'dit', 'dit'],
+    7: ['dah', 'dah', 'dit', 'dit', 'dit'],
+    8: ['dah', 'dah', 'dah', 'dit', 'dit'],
+    9: ['dah', 'dah', 'dah', 'dah', 'dit'],
+    0: ['dah', 'dah', 'dah', 'dah', 'dah']
 }
 
 const morse = document.getElementById('morse');
