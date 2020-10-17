@@ -1,4 +1,3 @@
-//TODO: Create mechanism for final character to be translated -- setTimeout to clear out character variable?
 const codex = {
     a: ['dit', 'dah'],
     b: ['dah', 'dit', 'dit', 'dit'],
@@ -31,12 +30,17 @@ const codex = {
 const morse = document.getElementById('morse');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
+let keyUpTimeout;
 let pressedAt;
 let prevPressedAt;
 let keyUpTime;
 let sameCharacter = true;
 let character = [];
 let keysEntered = [];
+
+const checkForPause = () => {                       // Called in timeout function on keyUp events to push the final character into the array
+    extractLetters();
+}
 
 const ditOrDah = keyPress => {                      // Calculates if length of keypress creates a dit or a dah
     if(keyPress <= 150){
@@ -50,20 +54,25 @@ const ditOrDah = keyPress => {                      // Calculates if length of k
 }
 
 const extractLetters = () => {
-    const prevWord = character.map(x => x);
-    character.length = 0;
-    keysEntered.push(prevWord);
+    if(character.length){                           // Prevents timeout function from pushing an empty array 
+        const prevWord = character.map(x => x);
+        console.log(prevWord)
+        character.length = 0;
+        keysEntered.push(prevWord);
+    }
 }
 
 const handleKeyDown = (e) => {
+    keyUpTimeout ? window.clearTimeout(keyUpTimeout) : null;
     pressedAt ? prevPressedAt = pressedAt : null;
     pressedAt = Date.now();
 }
 
 const handleKeyUp = () => {
     keyUpTime = Date.now();
-    const keyPressLength = keyUpTime - pressedAt;                      // Subtracts the current time from the time when the key was initially pressed
-    const key = ditOrDah(keyPressLength);                            // Determines if dit or dah
+    const keyPressLength = keyUpTime - pressedAt;                       // Subtracts the current time from the time when the key was initially pressed
+    const key = ditOrDah(keyPressLength);                               // Determines if dit or dah
+    keyUpTimeout = window.setTimeout(() => checkForPause(key), 1100)    // Sets timeout to process keypress in case it's the final one entered
     processLetter(key);
 }
 
@@ -82,17 +91,13 @@ const isNewWord = () => {
 }
 
 const processLetter = (key) => {
-    console.log(isNewWord())
     if(isNewWord()){
         extractLetters();
     }
     character.push(key);
     morse.textContent += `${key}. `
     key === 'dit' ? dit.play() : dah.play();
-    console.log(character);
 }
-
-
 
 window.addEventListener('keydown', handleKeyDown);
 window.addEventListener('keyup', handleKeyUp);
