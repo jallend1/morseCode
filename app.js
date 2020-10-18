@@ -52,7 +52,7 @@ let letters = '';
 
 
 const checkForPause = () => {                       // Called in timeout function on keyUp events to push the final character into the array
-    extractLetters();
+    extractLetter();
     // Gonna need this for spaces between words?
 }
 
@@ -69,28 +69,14 @@ const ditOrDah = keyPress => {                      // Calculates if length of k
 
 const convertMorseToLetter = (prevWord) => {
     const morseKeys = Object.keys(codex);
-    let isMatch;
     morseKeys.forEach(key => {
-        if(codex[key].length === prevWord.length){
-            for(let i = 0; i < prevWord.length; i++){
-                if(codex[key][i] !== prevWord[i]){
-                    isMatch = false;
-                    break;
-                }
-                else{
-                    isMatch = true;
-                }
-            }
-            isMatch === true ? letters += key : null;
+        if(codex[key].length === prevWord.length){                                                      // Skips letters of different lengths
+            codex[key].every((value, index) => value === prevWord[index]) ? letters += key : null;
         }
         translation.textContent = letters;
     })
-    console.log(prevWord[0] == codex.i[0])
-    console.log(prevWord)
-    console.log(codex.i)
-    console.log(morseKeys);
 }
-const extractLetters = () => {
+const extractLetter = () => {
     if(character.length){                           // Prevents timeout function from pushing an empty array 
         const prevWord = character.map(x => x);
         character.length = 0;
@@ -113,7 +99,7 @@ const handleKeyUp = () => {
     processLetter(key);
 }
 
-const isNewWord = () => {
+const isNewLetter = () => {
     if(prevPressedAt){                                      // Only runs if there is a previous character that established a comparison time
         if(keyUpTime - prevPressedAt < 1000){
             return false;
@@ -128,8 +114,8 @@ const isNewWord = () => {
 }
 
 const processLetter = (key) => {
-    if(isNewWord()){
-        extractLetters();
+    if(isNewLetter()){
+        extractLetter();
     }
     character.push(key);
     morse.textContent += `${key}. `
