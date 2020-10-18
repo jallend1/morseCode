@@ -38,6 +38,7 @@ const codex = {
 }
 
 const morse = document.getElementById('morse');
+const translation = document.getElementById('translation');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
 let keyUpTimeout;
@@ -47,9 +48,12 @@ let keyUpTime;
 let sameCharacter = true;
 let character = [];
 let keysEntered = [];
+let letters = '';
+
 
 const checkForPause = () => {                       // Called in timeout function on keyUp events to push the final character into the array
     extractLetters();
+    // Gonna need this for spaces between words?
 }
 
 const ditOrDah = keyPress => {                      // Calculates if length of keypress creates a dit or a dah
@@ -63,12 +67,35 @@ const ditOrDah = keyPress => {                      // Calculates if length of k
     keyPress <= 150 ? 'dit' : 'dah';                
 }
 
+const convertMorseToLetter = (prevWord) => {
+    const morseKeys = Object.keys(codex);
+    let isMatch;
+    morseKeys.forEach(key => {
+        if(codex[key].length === prevWord.length){
+            for(let i = 0; i < prevWord.length; i++){
+                if(codex[key][i] !== prevWord[i]){
+                    isMatch = false;
+                    break;
+                }
+                else{
+                    isMatch = true;
+                }
+            }
+            isMatch === true ? letters += key : null;
+        }
+        translation.textContent = letters;
+    })
+    console.log(prevWord[0] == codex.i[0])
+    console.log(prevWord)
+    console.log(codex.i)
+    console.log(morseKeys);
+}
 const extractLetters = () => {
     if(character.length){                           // Prevents timeout function from pushing an empty array 
         const prevWord = character.map(x => x);
-        console.log(prevWord)
         character.length = 0;
         keysEntered.push(prevWord);
+        convertMorseToLetter(prevWord);
     }
 }
 
