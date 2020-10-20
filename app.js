@@ -1,3 +1,6 @@
+// Todo: Adjust measure to separate letters (silence equal to a dah!)
+// Todo: Add measure to separate words (equal to 2 dahs and a dit!)
+
 const codex = {
     a: ['dit', 'dah'],
     b: ['dah', 'dit', 'dit', 'dit'],
@@ -36,9 +39,9 @@ const codex = {
     9: ['dah', 'dah', 'dah', 'dah', 'dit'],
     0: ['dah', 'dah', 'dah', 'dah', 'dah']
 }
-
 const morse = document.getElementById('morse');
 const translation = document.getElementById('translation');
+const resetButton = document.getElementById('reset');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
 let keyUpTimeout;
@@ -118,9 +121,23 @@ const processLetter = (key) => {
         extractLetter();
     }
     character.push(key);
-    morse.textContent += `${key}. `
+    if(morse.textContent === 'Press a key to start rockin'){
+        morse.textContent = `${key}. `;
+        translation.textContent = '...calculating'
+    }
+    else{
+        morse.textContent += `${key}. `
+    }
     key === 'dit' ? dit.play() : dah.play();
+}
+
+const resetPage = () => {
+    letters = '';
+    keysEntered.length = 0;
+    morse.textContent = 'Press a key to start rockin';
+    translation.textContent = 'Press a key to start rockin';
 }
 
 window.addEventListener('keydown', handleKeyDown);
 window.addEventListener('keyup', handleKeyUp);
+resetButton.addEventListener('click', resetPage);
