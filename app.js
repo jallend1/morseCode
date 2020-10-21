@@ -72,12 +72,14 @@ const ditOrDah = keyPress => {                      // Calculates if length of k
 
 const convertMorseToLetter = (prevWord) => {
     const morseKeys = Object.keys(codex);
+    const incomingLetters = letters;
     morseKeys.forEach(key => {
         if(codex[key].length === prevWord.length){                                                      // Skips letters of different lengths
             codex[key].every((value, index) => value === prevWord[index]) ? letters += key : null;
         }
-        translation.textContent = letters;
     })
+    if(letters === incomingLetters) letters+= '?';
+    translation.textContent = letters;
 }
 const extractLetter = () => {
     if(character.length){                           // Prevents timeout function from pushing an empty array 
