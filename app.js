@@ -44,7 +44,8 @@ const translation = document.getElementById('translation');
 const resetButton = document.getElementById('reset');
 const dit = new Audio('./audio/dit.mp3');
 const dah = new Audio('./audio/dah.mp3');
-let keyUpTimeout;
+let newCharTimeout;
+let newWordTimeout;
 let pressedAt;
 let prevPressedAt;
 let keyUpTime;
@@ -78,7 +79,7 @@ const convertMorseToLetter = (prevWord) => {
             codex[key].every((value, index) => value === prevWord[index]) ? letters += key : null;
         }
     })
-    if(letters === incomingLetters) letters+= '?';
+    if(letters === incomingLetters) letters += '?';                 // If letters remains unchanged, adds question mark for unrecognized character
     translation.textContent = letters;
 }
 const extractLetter = () => {
@@ -91,7 +92,8 @@ const extractLetter = () => {
 }
 
 const handleKeyDown = (e) => {
-    keyUpTimeout ? window.clearTimeout(keyUpTimeout) : null;
+    newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
+    newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
     pressedAt ? prevPressedAt = pressedAt : null;
     pressedAt = Date.now();
 }
@@ -100,7 +102,8 @@ const handleKeyUp = () => {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt;                       // Subtracts the current time from the time when the key was initially pressed
     const key = ditOrDah(keyPressLength);                               // Determines if dit or dah
-    keyUpTimeout = window.setTimeout(() => checkForPause(key), 1100)    // Sets timeout to process keypress in case it's the final one entered
+    newCharTimeout = window.setTimeout(extractLetter, 1100)             // Sets timeout to process keypress in case it's the final one entered;
+    newWordTimeout = window.setTimeout(() => letters += ' ', 2000)
     processLetter(key);
 }
 
