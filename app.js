@@ -1,6 +1,3 @@
-// Todo: Adjust measure to separate letters (silence equal to a dah!)
-// Todo: Add measure to separate words (equal to 2 dahs and a dit!)
-
 const codex = {
     a: ['dit', 'dah'],
     b: ['dah', 'dit', 'dit', 'dit'],
@@ -54,21 +51,8 @@ let character = [];
 let keysEntered = [];
 let letters = '';
 
-
-const checkForPause = () => {                       // Called in timeout function on keyUp events to push the final character into the array
-    extractLetter();
-    // Gonna need this for spaces between words?
-}
-
 const ditOrDah = keyPress => {                      // Calculates if length of keypress creates a dit or a dah
-    if(keyPress <= 150){
-        return 'dit'
-    }
-    else{
-        return 'dah'
-    }
-    // Why doesn't this work?!
-    keyPress <= 150 ? 'dit' : 'dah';                
+    return keyPress <= 150 ? 'dit' : 'dah';                
 }
 
 const convertMorseToLetter = (prevWord) => {
@@ -109,6 +93,7 @@ const handleKeyUp = () => {
 
 const isNewLetter = () => {
     if(prevPressedAt){                                      // Only runs if there is a previous character that established a comparison time
+        return (keyUpTime - prevPressedAt < 1000 ? false : true)
         if(keyUpTime - prevPressedAt < 1000){
             return false;
         }
