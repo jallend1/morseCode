@@ -94,12 +94,6 @@ const handleKeyUp = () => {
 const isNewLetter = () => {
     if(prevPressedAt){                                      // Only runs if there is a previous character that established a comparison time
         return (keyUpTime - prevPressedAt < 1000 ? false : true)
-        if(keyUpTime - prevPressedAt < 1000){
-            return false;
-        }
-        else{
-            return true;
-        }
     }
     else{
         return false;
