@@ -76,19 +76,23 @@ const extractLetter = () => {
 }
 
 const handleKeyDown = (e) => {
-    newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
-    newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
-    pressedAt ? prevPressedAt = pressedAt : null;
-    pressedAt = Date.now();
+    if(e.keyCode === 32){
+        newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
+        newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
+        pressedAt ? prevPressedAt = pressedAt : null;
+        pressedAt = Date.now();
+    }
 }
 
-const handleKeyUp = () => {
-    keyUpTime = Date.now();
-    const keyPressLength = keyUpTime - pressedAt;                       // Subtracts the current time from the time when the key was initially pressed
-    const key = ditOrDah(keyPressLength);                               // Determines if dit or dah
-    newCharTimeout = window.setTimeout(extractLetter, 1100)             // Sets timeout to process keypress in case it's the final one entered;
-    newWordTimeout = window.setTimeout(() => letters += ' ', 2000)
-    processLetter(key);
+const handleKeyUp = (e) => {
+    if(e.keyCode === 32){
+        keyUpTime = Date.now();
+        const keyPressLength = keyUpTime - pressedAt;                       // Subtracts the current time from the time when the key was initially pressed
+        const key = ditOrDah(keyPressLength);                               // Determines if dit or dah
+        newCharTimeout = window.setTimeout(extractLetter, 1100)             // Sets timeout to process keypress in case it's the final one entered;
+        newWordTimeout = window.setTimeout(() => letters += ' ', 2000)
+        processLetter(key);
+    }
 }
 
 const isNewLetter = () => {

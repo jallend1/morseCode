@@ -1,6 +1,6 @@
 # Morse Code Key
 
-Just a quick little web app that lets you hold down a key, and generates Morse Code based on the length of time you've held it down.
+Just a quick little web app that lets you hold down the spacebar, and generates Morse Code based on the length of time you've held it down.
 
 After a break, the app will combine the characters you have pressed into a letter.
 
@@ -10,7 +10,6 @@ All unrecognized combinations of dits and dahs are represented with a question m
 
 ## Possible update ideas?
 
-- Switch keypress to only spacebar
 - Adjust time intervals to something more official instead of what "felt" right
 - Adjustable time frames based on Morse code skill level
 
