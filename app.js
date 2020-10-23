@@ -51,6 +51,12 @@ let character = [];
 let keysEntered = [];
 let letters = '';
 
+const clearSounds = () => {
+    dit.pause();
+    dah.pause();
+    dit.currentTime = 0;
+    dah.currentTime = 0;
+}
 const ditOrDah = keyPress => {                      // Calculates if length of keypress creates a dit or a dah
     return keyPress <= 150 ? 'dit' : 'dah';                
 }
@@ -116,6 +122,7 @@ const processLetter = (key) => {
     else{
         morse.textContent += `${key}. `
     }
+    clearSounds();
     key === 'dit' ? dit.play() : dah.play();
 }
 
