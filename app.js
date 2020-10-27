@@ -40,6 +40,7 @@ const skillForm = document.getElementById("skillform");
 const morse = document.getElementById("morse");
 const translation = document.getElementById("translation");
 const resetButton = document.getElementById("reset");
+const morseReference = document.getElementById("morse-reference");
 const dit = new Audio("./audio/dit.mp3");
 const dah = new Audio("./audio/dah.mp3");
 let ditLength = 200;
@@ -58,7 +59,7 @@ const changeSkill = (e) => {
   if (e.target.value === "beginner") {
     ditLength === 200;
   } else if (e.target.value === "intermediate") {
-    ditLength === 200;
+    ditLength === 150;
   } else if (e.target.value === "advanced") {
     ditLength === 100;
   }
@@ -157,3 +158,12 @@ window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 resetButton.addEventListener("click", resetPage);
 skillForm.addEventListener("click", changeSkill);
+
+Object.keys(codex).forEach((morse) => {
+  morseReference.innerHTML += `
+    <tr>
+      <td>${morse}:</td> 
+      <td>${codex[morse]}</td>
+    </tr>
+    `;
+});

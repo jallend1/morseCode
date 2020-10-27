@@ -17,71 +17,83 @@
       <header>
         <h1>Morse Freaking Code</h1>
       </header>
-      <main>
-        <section>
-          <h2>This:</h2>
-          <p id="morse">Press a key to start rockin</p>
-        </section>
-        <section>
-          <h2>Becomes:</h2>
-          <h3 id="translation"></h3>
-        </section>
-        <section>
-          <button id="reset">Start Fresh</button>
-          <div>
-            <p>Select your proficiency level:</p>
-            <form id="skillform">
-              <input
-                checked
-                type="radio"
-                name="difficulty"
-                value="beginner"
-                id="beginner"
-              />
-              <label for="beginner">Beginner</label>
-              <input
-                type="radio"
-                name="difficulty"
-                value="intermediate"
-                id="intermediate"
-              />
-              <label for="intermediate">Intermediate</label>
-              <input
-                type="radio"
-                name="difficulty"
-                value="advanced"
-                id="advanced"
-              />
-              <label for="advanced">Advanced</label>
-            </form>
-          </div>
-        </section>
-        <footer>
-          <table>
-            <thead>
-              <tr>
-                <th colspan="2">Quick Timing Guide</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>dit</td>
-              <td>1 unit</td>
-            </tr>
-            <tr>
-              <td>dah</td>
-              <td>3 times as long as a dit</td>
-            </tr>
-            <tr>
-              <td>Space between letters</td>
-              <td>3 times as long as a dit</td>
-            </tr>
-            <tr>
-              <td>Space between words</td>
-              <td>7 times as long as a dit</td>
-            </tr>
-          </table>
-        </footer>
-      </main>
+      <div>
+        <main>
+          <section>
+            <h2>This:</h2>
+            <p id="morse">Press a key to start rockin</p>
+          </section>
+          <section>
+            <h2>Becomes:</h2>
+            <h3 id="translation"></h3>
+          </section>
+          <section>
+            <button id="reset">Start Fresh</button>
+            <div>
+              <p>Select your proficiency level:</p>
+              <form id="skillform">
+                <input
+                  checked
+                  type="radio"
+                  name="difficulty"
+                  value="beginner"
+                  id="beginner"
+                />
+                <label for="beginner">Beginner</label>
+                <input
+                  type="radio"
+                  name="difficulty"
+                  value="intermediate"
+                  id="intermediate"
+                />
+                <label for="intermediate">Intermediate</label>
+                <input
+                  type="radio"
+                  name="difficulty"
+                  value="advanced"
+                  id="advanced"
+                />
+                <label for="advanced">Advanced</label>
+              </form>
+            </div>
+          </section>
+          <section>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th colspan="2">Quick Timing Guide</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>dit</td>
+                  <td>1 unit</td>
+                </tr>
+                <tr>
+                  <td>dah</td>
+                  <td>3 times as long as a dit</td>
+                </tr>
+                <tr>
+                  <td>Space between letters</td>
+                  <td>3 times as long as a dit</td>
+                </tr>
+                <tr>
+                  <td>Space between words</td>
+                  <td>7 times as long as a dit</td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table id="morse-reference">
+                <thead>
+                  <th colspan="2">Morse Code Reference</th>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
