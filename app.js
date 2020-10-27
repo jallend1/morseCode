@@ -42,7 +42,7 @@ const translation = document.getElementById("translation");
 const resetButton = document.getElementById("reset");
 const dit = new Audio("./audio/dit.mp3");
 const dah = new Audio("./audio/dah.mp3");
-let ditLength = 100;
+let ditLength = 200;
 let newCharTimeout;
 let newWordTimeout;
 let pressedAt;
@@ -56,7 +56,7 @@ let skillLevel = "beginner";
 const changeSkill = (e) => {
   skillLevel = e.target.value;
   if (e.target.value === "beginner") {
-    ditLength === 300;
+    ditLength === 200;
   } else if (e.target.value === "intermediate") {
     ditLength === 200;
   } else if (e.target.value === "advanced") {
@@ -116,8 +116,8 @@ const handleKeyUp = (e) => {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
     const key = ditOrDah(keyPressLength); // Determines if dit or dah
-    newCharTimeout = window.setTimeout(extractLetter, 1100); // Sets timeout to process keypress in case it's the final one entered;
-    newWordTimeout = window.setTimeout(() => (letters += " "), 2000);
+    newCharTimeout = window.setTimeout(extractLetter, ditLength * 3); // Sets timeout to process keypress in case it's the final one entered;
+    newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 7);
     processLetter(key);
   }
 };
@@ -125,7 +125,7 @@ const handleKeyUp = (e) => {
 const isNewLetter = () => {
   if (prevPressedAt) {
     // Only runs if there is a previous character that established a comparison time
-    return keyUpTime - prevPressedAt < 1000 ? false : true;
+    return keyUpTime - prevPressedAt < ditLength * 4 ? false : true;
   } else {
     return false;
   }
