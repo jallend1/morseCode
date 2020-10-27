@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link href="./styles.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
     <!-- Removes mysterious favicon error popping up in the console -->
     <link rel="shortcut icon" href="#" />
     <title>Morse Code</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Morse Freaking Code</h1>
-        </header>
-        <main>
-            <section>
-                <h2>This:</h2>
-                <p id="morse">Press a key to start rockin</p>
-            </section>
-            <section>
-                <h2>Becomes:</h2>
-                <h3 id="translation"></h3>
-            </section>
-            <button id="reset">Start Fresh</button>
-        </main>
+      <header>
+        <h1>Morse Freaking Code</h1>
+      </header>
+      <main>
+        <section>
+          <h2>This:</h2>
+          <p id="morse">Press a key to start rockin</p>
+        </section>
+        <section>
+          <h2>Becomes:</h2>
+          <h3 id="translation"></h3>
+        </section>
+        <section>
+          <button id="reset">Start Fresh</button>
+          <div>
+            <p>Proficiency Level:</p>
+            <form id="skillform">
+              <input
+                type="radio"
+                name="difficulty"
+                value="beginner"
+                id="beginner"
+              />
+              <label for="beginner">Beginner</label>
+              <input
+                type="radio"
+                name="difficulty"
+                value="intermediate"
+                id="intermediate"
+              />
+              <label for="intermediate">Intermediate</label>
+              <input
+                type="radio"
+                name="difficulty"
+                value="advanced"
+                id="advanced"
+              />
+              <label for="advanced">Advanced</label>
+            </form>
+          </div>
+        </section>
+      </main>
     </div>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
