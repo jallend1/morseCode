@@ -1,9 +1,18 @@
 body {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
 }
 
 .container {
   margin: auto;
   text-align: center;
   width: 80%;
+}
+
+table {
+  margin: 2em auto;
+  text-align: auto;
+}
+
+td {
+  padding: 0 1em;
 }
