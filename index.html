@@ -18,17 +18,19 @@
         <h1>Morse Freaking Code</h1>
       </header>
       <div>
-        <main>
+        <main class="content">
           <section>
-            <h2>This:</h2>
-            <p id="morse">Press a key to start rockin</p>
-          </section>
-          <section>
-            <h2>Becomes:</h2>
-            <h3 id="translation"></h3>
-          </section>
-          <section>
-            <button id="reset">Start Fresh</button>
+            <div>
+              <h2>This:</h2>
+              <p id="morse">Press a key to start rockin</p>
+            </div>
+            <div>
+              <h2>Becomes:</h2>
+              <h3 id="translation"></h3>
+            </div>
+            <div>
+              <button id="reset">Start Fresh</button>
+            </div>
             <div>
               <p>Select your proficiency level:</p>
               <form id="skillform">
@@ -84,11 +86,11 @@
               </table>
             </div>
             <div>
-              <table id="morse-reference">
+              <table>
                 <thead>
                   <th colspan="2">Morse Code Reference</th>
                 </thead>
-                <tbody></tbody>
+                <tbody id="morse-reference"></tbody>
               </table>
             </div>
           </section>

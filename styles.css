@@ -8,6 +8,11 @@ body {
   width: 80%;
 }
 
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
 table {
   margin: 2em auto;
   text-align: auto;
