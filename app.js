@@ -43,7 +43,7 @@ const resetButton = document.getElementById("reset");
 const morseReference = document.getElementById("morse-reference");
 const dit = new Audio("./audio/dit.mp3");
 const dah = new Audio("./audio/dah.mp3");
-let ditLength = 200;
+let ditLength = 150;
 let newCharTimeout;
 let newWordTimeout;
 let pressedAt;
@@ -57,7 +57,7 @@ let skillLevel = "beginner";
 const changeSkill = (e) => {
   skillLevel = e.target.value;
   if (e.target.value === "beginner") {
-    ditLength === 200;
+    ditLength === 150;
   } else if (e.target.value === "intermediate") {
     ditLength === 150;
   } else if (e.target.value === "advanced") {
@@ -75,6 +75,7 @@ const clearSounds = () => {
 
 // Calculates if length of keypress creates a dit or a dah
 const ditOrDah = (keyPress) => {
+  console.log(keyPress)
   return keyPress <= ditLength ? "dit" : "dah";
 };
 
@@ -104,23 +105,19 @@ const extractLetter = () => {
 };
 
 const handleKeyDown = (e) => {
-  if (e.keyCode === 32) {
     newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
     newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
     pressedAt ? (prevPressedAt = pressedAt) : null;
     pressedAt = Date.now();
-  }
 };
 
 const handleKeyUp = (e) => {
-  if (e.keyCode === 32) {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
     const key = ditOrDah(keyPressLength); // Determines if dit or dah
     newCharTimeout = window.setTimeout(extractLetter, ditLength * 3); // Sets timeout to process keypress in case it's the final one entered;
     newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 7);
     processLetter(key);
-  }
 };
 
 const isNewLetter = () => {
