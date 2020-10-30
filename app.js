@@ -59,9 +59,9 @@ const changeSkill = (e) => {
   if (e.target.value === "beginner") {
     ditLength === 150;
   } else if (e.target.value === "intermediate") {
-    ditLength === 150;
-  } else if (e.target.value === "advanced") {
     ditLength === 100;
+  } else if (e.target.value === "advanced") {
+    ditLength === 50;
   }
 };
 
@@ -105,15 +105,19 @@ const extractLetter = () => {
 };
 
 const handleKeyDown = (e) => {
+  // e.repeat makes sure it fires only for the first keydown event 
+  if(!e.repeat){
     newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
     newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
     pressedAt ? (prevPressedAt = pressedAt) : null;
     pressedAt = Date.now();
+  }
 };
 
 const handleKeyUp = (e) => {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
+    console.log(keyPressLength)
     const key = ditOrDah(keyPressLength); // Determines if dit or dah
     newCharTimeout = window.setTimeout(extractLetter, ditLength * 3); // Sets timeout to process keypress in case it's the final one entered;
     newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 7);
