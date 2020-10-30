@@ -75,7 +75,6 @@ const clearSounds = () => {
 
 // Calculates if length of keypress creates a dit or a dah
 const ditOrDah = (keyPress) => {
-  console.log(keyPress)
   return keyPress <= ditLength ? "dit" : "dah";
 };
 
@@ -117,7 +116,6 @@ const handleKeyDown = (e) => {
 const handleKeyUp = (e) => {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
-    console.log(keyPressLength)
     const key = ditOrDah(keyPressLength); // Determines if dit or dah
     newCharTimeout = window.setTimeout(extractLetter, ditLength * 3); // Sets timeout to process keypress in case it's the final one entered;
     newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 7);
@@ -127,7 +125,9 @@ const handleKeyUp = (e) => {
 const isNewLetter = () => {
   if (prevPressedAt) {
     // Only runs if there is a previous character that established a comparison time
-    return keyUpTime - prevPressedAt < ditLength * 4 ? false : true;
+    console.log(keyUpTime - prevPressedAt)
+    return keyUpTime - prevPressedAt < ditLength * 6 
+    // ?? false : true;
   } else {
     return false;
   }
