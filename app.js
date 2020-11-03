@@ -81,15 +81,15 @@ const handleKeyUp = (e) => {
     keyUpTime = Date.now();
     const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
     const key = ditOrDah(keyPressLength); // Determines if dit or dah
-    newCharTimeout = window.setTimeout(extractLetter, ditLength * 6); // Sets timeout to process keypress in case it's the final one entered;
-    newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 10);
+    newCharTimeout = window.setTimeout(extractLetter, ditLength * 10); // Sets timeout to process keypress in case it's the final one entered;
+    newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 15);
     processLetter(key);
 };
 
 const isNewLetter = () => {
   if (prevPressedAt) {
     // Only runs if there is a previous character that established a comparison time
-    return keyUpTime - prevPressedAt < ditLength * 3;
+    return keyUpTime - prevPressedAt > ditLength * 7;
   } else {
     return false;
   }
