@@ -26,6 +26,8 @@ const changeSkill = (e) => {
     ditLength === 100;
   } else if (e.target.value === "advanced") {
     ditLength === 50;
+  } else if (e.target.value === 'custom'){
+    ditLength = customDit();
   }
 };
 
@@ -36,6 +38,10 @@ const clearSounds = () => {
   dit.currentTime = 0;
   dah.currentTime = 0;
 };
+
+const customDit () => {
+  return 50;
+}
 
 // Calculates if length of keypress creates a dit or a dah
 const ditOrDah = (keyPress) => {
