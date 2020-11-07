@@ -1,22 +1,44 @@
 body {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Heebo", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #11999e;
+}
+
+header {
+  background: #40514e;
+}
+
+h1 {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  text-align: center;
+  margin: 0;
+  color: #e4f9f5;
+}
+
+h2 {
+  font-family: "Work Sans", sans-serif;
 }
 
 .container {
   margin: auto;
   text-align: center;
   width: 80%;
+  background-color: #e4f9f5;
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  /* justify-content: space-between; */
 }
 
 table {
   margin: 2em auto;
   text-align: auto;
+}
+
+th {
+  color: #30e3ca;
 }
 
 td {
