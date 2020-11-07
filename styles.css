@@ -1,5 +1,5 @@
 body {
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #11999e;
@@ -9,15 +9,29 @@ header {
   background: #40514e;
 }
 
+.banner {
+  display: flex;
+  text-align: center;
+  color: white;
+}
+
 h1 {
-  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   text-align: center;
   margin: 0;
   color: #e4f9f5;
 }
 
 h2 {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h4 {
+  color: white;
+}
+
+#robot {
+  max-width: 600px;
 }
 
 .container {
