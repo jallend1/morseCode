@@ -116,6 +116,18 @@ const processLetter = (key) => {
   key === "dit" ? dit.play() : dah.play();
 };
 
+// Renders morse codex to page
+const renderMorse = () => {
+  Object.keys(codex).forEach((morse) => {
+    morseReference.innerHTML += `
+      <tr>
+        <td>${morse}:</td> 
+        <td>${codex[morse]}</td>
+      </tr>
+      `;
+  });
+}
+
 const resetPage = () => {
   letters = "";
   keysEntered.length = 0;
@@ -123,16 +135,9 @@ const resetPage = () => {
   translation.textContent = "Press a key to start rockin";
 };
 
+renderMorse();
+
 window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 resetButton.addEventListener("click", resetPage);
 skillForm.addEventListener("click", changeSkill);
-
-Object.keys(codex).forEach((morse) => {
-  morseReference.innerHTML += `
-    <tr>
-      <td>${morse}:</td> 
-      <td>${codex[morse]}</td>
-    </tr>
-    `;
-});
