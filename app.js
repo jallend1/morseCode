@@ -1,4 +1,4 @@
-import {codex} from './morse.js'
+import { codex } from "./morse.js";
 
 const skillForm = document.getElementById("skillform");
 const morse = document.getElementById("morse");
@@ -26,7 +26,7 @@ const changeSkill = (e) => {
     ditLength === 100;
   } else if (e.target.value === "advanced") {
     ditLength === 50;
-  } else if (e.target.value === 'custom'){
+  } else if (e.target.value === "custom") {
     ditLength = customDit();
   }
 };
@@ -39,9 +39,9 @@ const clearSounds = () => {
   dah.currentTime = 0;
 };
 
-const customDit () => {
+const customDit = () => {
   return 50;
-}
+};
 
 // Calculates if length of keypress creates a dit or a dah
 const ditOrDah = (keyPress) => {
@@ -74,8 +74,8 @@ const extractLetter = () => {
 };
 
 const handleKeyDown = (e) => {
-  // e.repeat makes sure it fires only for the first keydown event 
-  if(!e.repeat){
+  // e.repeat makes sure it fires only for the first keydown event
+  if (!e.repeat) {
     newCharTimeout ? window.clearTimeout(newCharTimeout) : null;
     newWordTimeout ? window.clearTimeout(newWordTimeout) : null;
     pressedAt ? (prevPressedAt = pressedAt) : null;
@@ -84,12 +84,12 @@ const handleKeyDown = (e) => {
 };
 
 const handleKeyUp = (e) => {
-    keyUpTime = Date.now();
-    const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
-    const key = ditOrDah(keyPressLength); // Determines if dit or dah
-    newCharTimeout = window.setTimeout(extractLetter, ditLength * 10); // Sets timeout to process keypress in case it's the final one entered;
-    newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 15);
-    processLetter(key);
+  keyUpTime = Date.now();
+  const keyPressLength = keyUpTime - pressedAt; // Subtracts the current time from the time when the key was initially pressed
+  const key = ditOrDah(keyPressLength); // Determines if dit or dah
+  newCharTimeout = window.setTimeout(extractLetter, ditLength * 10); // Sets timeout to process keypress in case it's the final one entered;
+  newWordTimeout = window.setTimeout(() => (letters += " "), ditLength * 15);
+  processLetter(key);
 };
 
 const isNewLetter = () => {
