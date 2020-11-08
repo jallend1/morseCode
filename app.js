@@ -16,20 +16,6 @@ let keyUpTime;
 let character = [];
 let keysEntered = [];
 let letters = "";
-let skillLevel = "beginner";
-
-const changeSkill = (e) => {
-  skillLevel = e.target.value;
-  if (e.target.value === "beginner") {
-    ditLength === 150;
-  } else if (e.target.value === "intermediate") {
-    ditLength === 100;
-  } else if (e.target.value === "advanced") {
-    ditLength === 50;
-  } else if (e.target.value === "custom") {
-    ditLength = customDit();
-  }
-};
 
 const clearSounds = () => {
   // Stops previous sound when new sound gets rockin
@@ -37,10 +23,6 @@ const clearSounds = () => {
   dah.pause();
   dit.currentTime = 0;
   dah.currentTime = 0;
-};
-
-const customDit = () => {
-  return 50;
 };
 
 // Calculates if length of keypress creates a dit or a dah
@@ -139,4 +121,3 @@ renderMorse();
 window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 resetButton.addEventListener("click", resetPage);
-skillForm.addEventListener("click", changeSkill);
