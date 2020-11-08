@@ -57,6 +57,7 @@ h4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   font-size: 0.75em;
+  padding-bottom: 1.25em;
 }
 
 .character-id {
@@ -69,7 +70,29 @@ h4 {
   font-weight: bold;
 }
 
+button {
+  box-shadow: inset 0px 0px 14px -3px #f2fadc;
+  background-color: #11999e;
+  border-radius: 10px;
+  border: 1px solid #b2b8ad;
+  color: #757d6f;
+  padding: 1em 1.25em;
+  color: #e4f9f5;
+}
+
+button:hover {
+  background-color: pink;
+  color: black;
+}
+
+button:active {
+  position: relative;
+  top: 1px;
+}
+
 footer {
+  margin-top: 0;
+  padding: 0;
   color: #e4f9f5;
   background: #40514e;
   text-align: center;
