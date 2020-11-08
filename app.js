@@ -113,7 +113,7 @@ const resetPage = () => {
   letters = "";
   keysEntered.length = 0;
   morse.textContent = "Press a key to start rockin";
-  translation.textContent = "Press a key to start rockin";
+  translation.textContent = "(You haven't entered anything yet)";
 };
 
 renderMorse();

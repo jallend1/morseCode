@@ -40,7 +40,7 @@ h4 {
   margin: auto;
   text-align: center;
   width: 80%;
-  background-color: #e4f9f5;
+  background-color: #eee;
 }
 
 .guide {
@@ -92,8 +92,21 @@ button:active {
 
 footer {
   margin-top: 0;
-  padding: 0;
+  padding: 0.5em;
   color: #e4f9f5;
   background: #40514e;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.75em;
+}
+
+a {
+  text-decoration: none;
+  color: pink;
+}
+
+a:hover {
+  position: relative;
+  top: 1px;
 }
