@@ -9,12 +9,6 @@ header {
   background: #40514e;
 }
 
-.banner {
-  display: flex;
-  text-align: center;
-  color: white;
-}
-
 h1 {
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   text-align: center;
@@ -28,6 +22,14 @@ h2 {
 
 h4 {
   color: white;
+}
+
+.banner {
+  background: #eeeeee;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  padding: 0 2em;
+  text-align: center;
 }
 
 #robot {
@@ -57,4 +59,10 @@ th {
 
 td {
   padding: 0 1em;
+}
+
+footer {
+  color: #e4f9f5;
+  background: #40514e;
+  text-align: center;
 }
