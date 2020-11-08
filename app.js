@@ -120,11 +120,10 @@ const processLetter = (key) => {
 const renderMorse = () => {
   Object.keys(codex).forEach((morse) => {
     morseReference.innerHTML += `
-      <tr>
-        <td>${morse}:</td> 
-        <td>${codex[morse]}</td>
-      </tr>
-      `;
+    <div class="character-id">
+      <span class="letter">${morse.toUpperCase()}:</span> <span>${codex[morse]}</span>
+    </div>
+    `;
   });
 }
 

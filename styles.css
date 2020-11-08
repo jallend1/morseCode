@@ -43,22 +43,30 @@ h4 {
   background-color: #e4f9f5;
 }
 
-.content {
+.guide {
+  background-color: #40514e;
+  color: #e4f9f5;
+}
+
+.guide h2 {
+  padding: 1em 0;
+  margin: 0;
+}
+
+#morse-reference {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  font-size: 0.75em;
 }
 
-table {
-  margin: 2em auto;
-  text-align: auto;
-}
-
-th {
-  color: #30e3ca;
-}
-
-td {
+.character-id {
+  display: flex;
+  justify-content: space-between;
   padding: 0 1em;
+}
+
+.letter {
+  font-weight: bold;
 }
 
 footer {
