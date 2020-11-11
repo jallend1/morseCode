@@ -45,9 +45,11 @@ h4 {
 .banner {
   background: #eeeeee;
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   padding: 0 2em;
   text-align: center;
+  margin-bottom: 1.25em;
 }
 
 #robot {
@@ -56,6 +58,19 @@ h4 {
 
 table {
   margin: auto;
+  background: #40514e;
+}
+
+th {
+  background-color: #11999e;
+}
+
+tr:nth-child(odd) {
+  background: #eee;
+}
+
+tr:nth-child(even) {
+  background: #e4f9f5;
 }
 
 td {
