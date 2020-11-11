@@ -1,8 +1,19 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Heebo', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #11999e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 header {
@@ -24,6 +35,13 @@ h4 {
   color: white;
 }
 
+.container {
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  background-color: #eee;
+}
+
 .banner {
   background: #eeeeee;
   display: grid;
@@ -36,11 +54,12 @@ h4 {
   max-height: 300px;
 }
 
-.container {
+table {
   margin: auto;
-  text-align: center;
-  width: 80%;
-  background-color: #eee;
+}
+
+td {
+  width: 50%;
 }
 
 .guide {
@@ -71,13 +90,13 @@ h4 {
 }
 
 button {
-  box-shadow: inset 0px 0px 14px -3px #f2fadc;
+  box-shadow: inset 2px 5px 14px -3px #f2fadc;
   background-color: #11999e;
   border-radius: 10px;
   border: 1px solid #b2b8ad;
-  color: #757d6f;
   padding: 1em 1.25em;
   color: #e4f9f5;
+  margin-bottom: 1.25em;
 }
 
 button:hover {
@@ -91,14 +110,16 @@ button:active {
 }
 
 footer {
+  height: 25px;
   margin-top: 0;
-  padding: 0.5em;
+  padding: 5px;
   color: #e4f9f5;
   background: #40514e;
   text-align: center;
   display: flex;
   justify-content: space-around;
   font-size: 0.75em;
+  flex-shrink: 0;
 }
 
 a {

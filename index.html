@@ -10,11 +10,12 @@
     <link href="./styles.css" rel="stylesheet" />
     <!-- Removes mysterious favicon error popping up in the console -->
     <link rel="shortcut icon" href="#" />
-    <title>Morse Code</title>
+    <title>Morse Coder</title>
   </head>
   <body>
+    <div class="content">
     <header>
-      <h1>Morse Freaking Code</h1>
+      <h1>Morse Coder</h1>
     </header>
     <div class="container">
       <div class="banner">
@@ -24,14 +25,41 @@
         <div>
           <h2>.... . .-.. .-.. ---</h2>
           <subtitle>(Hello)</subtitle>
-          <p>I'm just a dummy interested in both Morse code AND coding, so I decided to combine my two disparate interests into something in the hopes that the end result would be a combination as glorious as that of peanut butter and chocolate or Pizza Hut and Taco Bells.</p>
-          <p>Press a key to start!</p>
+          <!-- <p>I'm just a dummy interested in both Morse code AND coding, so I decided to combine my two disparate interests into something in the hopes that the end result would be a combination as glorious as that of peanut butter and chocolate or Pizza Huts and Taco Bells.</p> -->
+          <p>Press a key to make some Morse code!</p>
+          <table>
+            <thead>
+            <tr>
+              <th colspan="2">
+                Quick Reference
+              </th>
+            </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dit</td>
+                  <td>Less than 150 milliseconds</td>
+                </tr>
+                <tr>
+                  <td>Dah</td>
+                  <td>More than 150 milliseconds</td>
+                </tr>
+                <tr>
+                  <td>End of character</td>
+                  <td>1.5 seconds</td>
+                </tr>
+                <tr>
+                  <td>End of word</td>
+                  <td>2 seconds</td>
+                </tr>
+              </tbody>
+          </table>
         </div>
       </div>
       <div>
         <main>
           <section class="guide">
-            <h2>Quick Reference</h2>
+            <h2>Morse Legend</h2>
             <div id="morse-reference">
             </div>
           </section>
@@ -50,11 +78,12 @@
           </section>
         </main>
       </div>
-      <footer>
-        <p>Jason made this!</p>
-        <p>Image courtesy of <a href="https://icons8.com/illustrations/illustration/pixeltrue-settings">icons8</a>.</p>
-      </footer>
-      </div>
+    </div>
+  </div>
+          <footer>
+            <p>Jason made this!</p>
+            <p>Image courtesy of <a href="https://icons8.com/illustrations/illustration/pixeltrue-settings">icons8</a>.</p>
+          </footer>
     <script src="app.js" type="module"></script>
   </body>
 </html>

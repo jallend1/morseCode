@@ -1,6 +1,5 @@
 import { codex } from "./morse.js";
 
-const skillForm = document.getElementById("skillform");
 const morse = document.getElementById("morse");
 const translation = document.getElementById("translation");
 const resetButton = document.getElementById("reset");
@@ -100,12 +99,25 @@ const processLetter = (key) => {
 
 // Renders morse codex to page
 const renderMorse = () => {
+  // Puts all the letters first
   Object.keys(codex).forEach((morse) => {
-    morseReference.innerHTML += `
-    <div class="character-id">
+    if(morse.charCodeAt(0) > 57){
+      morseReference.innerHTML += `
+      <div class="character-id">
       <span class="letter">${morse.toUpperCase()}:</span> <span>${codex[morse]}</span>
-    </div>
-    `;
+      </div>
+      `;
+    }
+  });
+  // Plops the numbers at the end of the reference sheet
+  Object.keys(codex).forEach((morse) => {
+    if(morse.charCodeAt(0) < 58){
+      morseReference.innerHTML += `
+      <div class="character-id">
+      <span class="letter">${morse.toUpperCase()}:</span> <span>${codex[morse]}</span>
+      </div>
+      `;
+    }
   });
 }
 
